@@ -1,0 +1,27 @@
+@import "../framework/variables";
+
+.tile {
+  $space: $air-s;
+  background-color: $color-tile;
+  bottom: $space;
+  box-shadow: 0 ($air-s/2) $air-s $color-shadow;
+  display: block;
+  left: $space;
+  overflow: hidden;
+  position: absolute;
+  right: $space;
+  top: $space;
+
+  &--actions {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &--action {
+    display: block;
+    float: left;
+  }
+}

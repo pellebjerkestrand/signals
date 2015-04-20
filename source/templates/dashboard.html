@@ -1,5 +1,4 @@
 {% extends "../layouts/main.html" %}
 {% block body %}
-<h1>{{ title | default("Dashboard") }}</h1>
-{% organism "related-articles" %}
+    {% organism "grid" %}
 {% endblock %}

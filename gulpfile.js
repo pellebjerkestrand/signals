@@ -35,6 +35,7 @@ var dist = './dist/',
 var paths = {
     dist: {
         latest: dist + latest,
+        assets: version + 'assets',
         css: version,
         js: version,
         pages: version + 'pages/',
@@ -44,6 +45,7 @@ var paths = {
         organisms: version + 'guide/organisms.html'
     },
     source: {
+        assets: source + 'assets/**/*.*',
         data: source + 'data/',
         pages: source + 'pages/**/*.html',
         scripts: [
@@ -141,6 +143,15 @@ var getComponents = function(componentDirectory, componentType){
 
     return components;
 };
+
+gulp.task('clean:assets', function(){
+    del.sync(paths.dist.assets);
+});
+
+gulp.task('build:assets', ['clean:assets'], function(){
+    return gulp.src(paths.source.assets)
+        .pipe(gulp.dest(paths.dist.assets));
+});
 
 gulp.task('clean:css', function(){
     del.sync(paths.dist.css + '*.css');
@@ -275,7 +286,7 @@ gulp.task('build:latest', ['clean:latest'], function(){
         .pipe(gulp.dest(dist));
 });
 
-gulp.task('build:all', ['build:css', 'build:js', 'build:html', 'build:latest', 'build:components']);
+gulp.task('build:all', ['build:assets', 'build:css', 'build:js', 'build:html', 'build:latest', 'build:components']);
 
 gulp.task('default', ['build:all']);
 

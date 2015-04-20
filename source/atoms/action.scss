@@ -1,0 +1,36 @@
+@import "../framework/variables";
+
+.action {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 1em;
+  height: $size-action;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: $size-action;
+
+  &:after {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    bottom: 0;
+    content: ' ';
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &--text {
+    display: none;
+  }
+
+  &__close {
+    &:after {
+      background-image: url('assets/images/iconmonstr-x-mark-4-icon.svg');
+    }
+  }
+}

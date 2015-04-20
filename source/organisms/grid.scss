@@ -1,0 +1,8 @@
+@import "../framework/mixins";
+
+.grid {
+  margin: 0;
+  padding: 0;
+
+  @include clearfix();
+}
