@@ -1,0 +1,25 @@
+<div data-bind="if: showInitializer">
+    <div class="grid-initializer">
+        <div>
+            <label for="url">URL</label>
+            <input id="url" type="text" placeholder="url" data-bind="textInput: url" />
+        </div>
+        <div>
+            <label for="method">Method</label>
+            <select id="method" name="method" data-bind="value: method">
+                <option value="websockets">WEBSOCKETS</option>
+                <option value="get">GET</option>
+            </select>
+        </div>
+        <div>
+            <label for="sleep">Sleep</label>
+            <input id="sleep" type="text" placeholder="sleep" data-bind="textInput: sleep" />
+        </div>
+        <div>
+            <button type="button" data-bind="click: initialize">Initialize</button>
+        </div>
+    </div>
+</div>
+<div data-bind="if: showGrid">
+    <div class="grid-container" data-bind='component: { name: "grid", params: gridOptions }'></div>
+</div>

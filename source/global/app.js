@@ -1,13 +1,18 @@
 require([
     'ko',
     'organisms/grid',
+    'organisms/grid-init',
     'molecules/tile--boolean',
     'molecules/tile--debug',
     'molecules/tile--double',
     'molecules/tile--int',
-    'molecules/tile--string'], function(ko, gridTile, booleanTile, debugTile, doubleTile, intTile, stringTile){
+    'molecules/tile--string'], function(ko, grid, gridInit, booleanTile, debugTile, doubleTile, intTile, stringTile){
     ko.components.register('grid', {
         require: 'organisms/grid'
+    });
+
+    ko.components.register('grid-init', {
+        require: 'organisms/grid-init'
     });
 
     ko.components.register('tile--boolean', {

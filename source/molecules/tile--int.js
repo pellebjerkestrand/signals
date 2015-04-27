@@ -35,7 +35,7 @@ define(['ko', 'text!./tile--int.tmpl.html', 'reqwest'], function(ko, tmpl, reqwe
         if(params.options.method === "get"){
             doRequest(params.datapoint.url, self.messages, params.options.sleep);
         } else {
-            doSocket(params.datapoint.url, self.messages);
+            doSocket(params.datapoint.websocket, self.messages);
         }
     }
 
