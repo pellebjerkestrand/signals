@@ -1,6 +1,8 @@
 define(['ko', 'text!./grid.tmpl.html', 'reqwest'], function(ko, tmpl, reqwest){
-    function ViewModel(options){
+    function ViewModel(params){
         var self = this;
+
+        self.options = params;
 
         self.availableTiles =  ko.observableArray([]);
         self.activeTiles =  ko.observableArray([]);
@@ -14,14 +16,15 @@ define(['ko', 'text!./grid.tmpl.html', 'reqwest'], function(ko, tmpl, reqwest){
         });
 
         reqwest({
-            url: options.tiles,
+            url: self.options.tiles,
             method: 'get',
             success: function(response){
                 // TODO: set available tiles and make a picker that sets active tiles
                 self.activeTiles(response);
             },
             error: function(error){
-
+                // TODO: Proper logging
+                console.log(error);
             }
         });
     }

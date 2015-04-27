@@ -7,6 +7,6 @@
 </div>
 <div class="grid--active" data-bind="if: showActiveGrid">
     <ul class="grid" data-bind="foreach: activeTiles">
-        <li class="node" data-bind='component: { name: "tile--" + $data.type , params: $data}'></li>
+        <li class="node" data-bind='component: { name: "tile--" + $data.type , params: { "datapoint": $data, "options": $parent.options }}'></li>
     </ul>
 </div>

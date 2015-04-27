@@ -1,22 +1,42 @@
-define(['ko', 'text!./tile--debug.tmpl.html'], function(ko, tmpl){
-    function ViewModel(){
+define(['ko', 'text!./tile--int.tmpl.html', 'reqwest'], function(ko, tmpl, reqwest){
+    function doRequest(url, stack, sleep){
+        reqwest({
+            url: url,
+            method: 'get',
+            success: function(response){
+                stack.push(response.value + ': ' + Date.now());
+
+                setTimeout(function(){
+                    doRequest(url, stack, sleep);
+                }, sleep);
+            }
+        });
+    }
+
+    function doSocket(url, stack){
+        var ws = new WebSocket(url);
+
+        ws.onmessage = function(msg){
+            if(msg.data.hasOwnProperty('value')){
+                stack.push(msg.data.value + ': ' + Date.now());
+            }
+        };
+    }
+
+    function ViewModel(params){
         var self = this;
 
         self.messages =  ko.observableArray([]);
 
         self.text = ko.computed(function(){
-            return self.messages().join('\n');
+            return self.messages()[self.messages().length - 1];
         });
 
-        self.ws = new WebSocket("ws://echo.websocket.org");
-
-        self.ws.onmessage = function(msg){
-            self.messages.push(msg.data);
-        };
-
-        self.ws.onopen = setInterval(function(){
-            self.ws.send(self.messages().length);
-        }, 1000);
+        if(params.options.method === "get"){
+            doRequest(params.datapoint.url, self.messages, params.options.sleep);
+        } else {
+            doSocket(params.datapoint.url, self.messages);
+        }
     }
 
     return {

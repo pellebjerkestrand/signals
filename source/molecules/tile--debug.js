@@ -1,17 +1,17 @@
 define(['ko', 'text!./tile--debug.tmpl.html'], function(ko, tmpl){
-    function ViewModel(){
+    function ViewModel(params){
         var self = this;
 
         self.messages =  ko.observableArray([]);
 
         self.text = ko.computed(function(){
-            return self.messages().join('\n');
+            return self.messages()[self.messages().length - 1];
         });
 
         self.ws = new WebSocket("ws://echo.websocket.org");
 
         self.ws.onmessage = function(msg){
-            self.messages.push(msg.data);
+            self.messages.push(msg.data + ': ' + Date.now());
         };
 
         self.ws.onopen = setInterval(function(){
