@@ -39,6 +39,7 @@ var paths = {
         css: version,
         js: version,
         api: version + 'api/',
+        index: version,
         pages: version + 'pages/',
         components: version + 'guide/',
         atoms: version + 'guide/atoms.html',
@@ -49,6 +50,7 @@ var paths = {
         assets: source + 'assets/**/*.*',
         data: source + 'data/',
         api: source + 'api/**/*.json',
+        index: source + 'index/**/*.*',
         pages: source + 'pages/**/*.html',
         scripts: [
             source + '**/*.js',
@@ -218,6 +220,15 @@ gulp.task('build:html', ['clean:html'], function(){
         .pipe(gulp.dest(paths.dist.pages));
 });
 
+gulp.task('clean:index', function(){
+    del.sync(paths.dist.index + '*.config');
+});
+
+gulp.task('build:index', ['clean:index'], function(){
+    return gulp.src(paths.source.index)
+        .pipe(gulp.dest(paths.dist.index));
+});
+
 gulp.task('clean:atoms', function(){
     del.sync(paths.dist.atoms);
 });
@@ -298,7 +309,7 @@ gulp.task('build:latest', ['clean:latest'], function(){
         .pipe(gulp.dest(dist));
 });
 
-gulp.task('build:all', ['build:api', 'build:assets', 'build:css', 'build:js', 'build:html', 'build:latest', 'build:components']);
+gulp.task('build:all', ['build:api', 'build:assets', 'build:css', 'build:index', 'build:js', 'build:html', 'build:latest', 'build:components']);
 
 gulp.task('default', ['build:all']);
 
