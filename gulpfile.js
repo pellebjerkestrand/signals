@@ -38,6 +38,7 @@ var paths = {
         assets: version + 'assets',
         css: version,
         js: version,
+        api: version + 'api/',
         pages: version + 'pages/',
         components: version + 'guide/',
         atoms: version + 'guide/atoms.html',
@@ -47,6 +48,7 @@ var paths = {
     source: {
         assets: source + 'assets/**/*.*',
         data: source + 'data/',
+        api: source + 'api/**/*.json',
         pages: source + 'pages/**/*.html',
         scripts: [
             source + '**/*.js',
@@ -79,7 +81,8 @@ var options = {
             organisms: 'organisms',
             require: '../node_modules/requirejs/require',
             text: '../node_modules/requirejs-text/text',
-            ko: '../node_modules/knockout/build/output/knockout-latest'
+            ko: '../node_modules/knockout/build/output/knockout-latest',
+            reqwest: '../node_modules/reqwest/reqwest'
         }
     },
     prefix: {
@@ -143,6 +146,15 @@ var getComponents = function(componentDirectory, componentType){
 
     return components;
 };
+
+gulp.task('clean:api', function(){
+    del.sync(paths.dist.api);
+});
+
+gulp.task('build:api', ['clean:api'], function(){
+    return gulp.src(paths.source.api)
+        .pipe(gulp.dest(paths.dist.api));
+});
 
 gulp.task('clean:assets', function(){
     del.sync(paths.dist.assets);
@@ -286,7 +298,7 @@ gulp.task('build:latest', ['clean:latest'], function(){
         .pipe(gulp.dest(dist));
 });
 
-gulp.task('build:all', ['build:assets', 'build:css', 'build:js', 'build:html', 'build:latest', 'build:components']);
+gulp.task('build:all', ['build:api', 'build:assets', 'build:css', 'build:js', 'build:html', 'build:latest', 'build:components']);
 
 gulp.task('default', ['build:all']);
 

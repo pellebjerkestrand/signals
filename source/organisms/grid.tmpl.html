@@ -1,0 +1,12 @@
+<div class="picker">
+    <ul data-bind="foreach: availableTiles">
+        <li>
+            <span data-bind="text: $data"></span>
+        </li>
+    </ul>
+</div>
+<div class="grid--active" data-bind="if: showActiveGrid">
+    <ul class="grid" data-bind="foreach: activeTiles">
+        <li class="node" data-bind='component: { name: "tile--" + $data.type , params: $data}'></li>
+    </ul>
+</div>

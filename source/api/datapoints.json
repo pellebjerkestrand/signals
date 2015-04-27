@@ -1,10 +1,46 @@
 [{
-  "id": "ID of data point",
-  "name": "Name of data point (f.ex. \"Kantina\")",
-  "unit": "Unit used for value(s) (f.ex. dB, C etc.)",
-  "type": "Type of value (f.ex. string, int, double)",
-  "value": "Value (f.ex. \"foo\", 6, 2.4 )",
-  "timestamp": "Last time value was updated",
-  "url": "This data point's HTTP GET URL (for pulling)",
-  "websocket": "This data point's WebSocket URL (for pushing)"
+  "id": "0",
+  "name": "Bool",
+  "unit": "",
+  "type": "boolean",
+  "value": false,
+  "timestamp": "30",
+  "url": "../api/websocket--boolean.json",
+  "websocket": "../api/websocket--boolean.json"
+},{
+  "id": "1",
+  "name": "Double",
+  "unit": "",
+  "type": "double",
+  "value": 1.1,
+  "timestamp": "30",
+  "url": "../api/websocket--double.json",
+  "websocket": "../api/websocket--double.json"
+},{
+  "id": "2",
+  "name": "Int",
+  "unit": "",
+  "type": "int",
+  "value": 2,
+  "timestamp": "30",
+  "url": "../api/websocket--int.json",
+  "websocket": "../api/websocket--int.json"
+},{
+  "id": "3",
+  "name": "String",
+  "unit": "",
+  "type": "string",
+  "value": "foo",
+  "timestamp": "30",
+  "url": "../api/websocket--string.json",
+  "websocket": "../api/websocket--string.json"
+},{
+  "id": "4",
+  "name": "Debug",
+  "unit": "",
+  "type": "debug",
+  "value": "qux",
+  "timestamp": "30",
+  "url": "ws://echo.websocket.org",
+  "websocket": "ws://echo.websocket.org"
 }]

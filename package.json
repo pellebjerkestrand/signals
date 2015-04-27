@@ -38,6 +38,7 @@
   "dependencies": {
     "knockout": "3.3.0",
     "requirejs": "2.1.16",
-    "requirejs-text": "2.0.12"
+    "requirejs-text": "2.0.12",
+    "reqwest": "^1.1.5"
   }
 }

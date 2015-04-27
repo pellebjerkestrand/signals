@@ -1,4 +1,4 @@
-define(['ko', 'text!./tile--debug.tmpl.html'], function(ko, tmpl){
+define(['ko', 'text!./tile--boolean.tmpl.html'], function(ko, tmpl){
     function ViewModel(){
         var self = this;
 

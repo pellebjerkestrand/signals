@@ -1,0 +1,10 @@
+[{
+  "id": "ID of data point",
+  "name": "Name of data point (f.ex. \"Kantina\")",
+  "unit": "Unit used for value(s) (f.ex. dB, C etc.)",
+  "type": "Type of value (f.ex. string, int, double, boolean)",
+  "value": "Value (f.ex. \"foo\", 6, 2.4 )",
+  "timestamp": "Last time value was updated",
+  "url": "This data point's HTTP GET URL (for pulling)",
+  "websocket": "This data point's WebSocket URL (for pushing)"
+}]

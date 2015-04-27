@@ -1,5 +1,1 @@
-<ul class="grid">
-    {% for i in Array(10) %}
-        {% molecule "node" %}
-    {% endfor %}
-</ul>
+<div class="grid-container" data-bind='component: { name: "grid", params: { "tiles": "../api/datapoints.json" } }'></div>
